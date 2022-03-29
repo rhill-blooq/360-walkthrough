@@ -16,12 +16,6 @@
 <body>
     <a-scene>
         <a-assets>
-<!--            <video id="point1vid" crossorigin="anonymous" autoplay muted loop="true" src="assets/close_to_screen_video.mp4"></video>-->
-<!--            <video id="point1vid" crossorigin="anonymous" autoplay muted loop="true" src="assets/close_to_screen_video.mp4"></video>-->
-<!--            <video id="point1vid" crossorigin="anonymous" autoplay muted loop="true" src="assets/close_to_screen_video.mp4"></video>-->
-<!--            <video id="point1vid" crossorigin="anonymous" autoplay muted loop="true" src="assets/close_to_screen_video.mp4"></video>-->
-<!--            <video id="point1vid" crossorigin="anonymous" autoplay muted loop="true" src="assets/close_to_screen_video.mp4"></video>-->
-
             <img id="point1" crossorigin="anonymous" src="assets/close_to_screen.jpg">
             <img id="point2" crossorigin="anonymous" src="./assets/mid_shop.jpg">
             <img id="point3" crossorigin="anonymous" src="./assets/far_from_screen.jpg">
@@ -30,7 +24,9 @@
             <img id="hotspot" crossorigin="anonymous" src="./assets/hotspot.png">
         </a-assets>
 
-        <a-sky id="skybox" src="#point1" radius="490" opacity="0.99"></a-sky>
+        <a-sky id="skybox" src="#point1" radius="490" opacity="0.99"
+               animation__fade="property: components.material.material.color; type: color; from: #FFF; to: #000; dur: 300; startEvents: fade"
+               animation__fadeback="property: components.material.material.color; type: color; from: #000; to: #FFF; dur: 300; startEvents: animationcomplete__fade"></a-sky>
 <!--        <a-sky id="skyvideo" src="#point1vid" auto-play-video="video: #point1vid"></a-sky>-->
 
 
@@ -41,21 +37,18 @@
                 <a-image spot="linkto:#point4;spotgroup:group-point4" position="6 0 -5.3"></a-image>
                 <a-image spot="linkto:#point5;spotgroup:group-point5" position="4.5 0 7"></a-image>
             </a-entity>
-
             <a-entity id="group-point2" scale="0 0 0">
                 <a-image spot="linkto:#point1;spotgroup:group-point1" position="-7 0 0.7"></a-image>
                 <a-image spot="linkto:#point3;spotgroup:group-point3" position="5 0 0.7"></a-image>
                 <a-image spot="linkto:#point4;spotgroup:group-point4" position="-0.5 0 -5.3"></a-image>
                 <a-image spot="linkto:#point5;spotgroup:group-point5" position="-1.5 0 7.7"></a-image>
             </a-entity>
-
             <a-entity id="group-point3" scale="0 0 0">
                 <a-image spot="linkto:#point1;spotgroup:group-point1" position="-11.5 0 0"></a-image>
                 <a-image spot="linkto:#point2;spotgroup:group-point2" position="-5 0 -0.7"></a-image>
                 <a-image spot="linkto:#point4;spotgroup:group-point4" position="-5.5 0 -6"></a-image>
                 <a-image spot="linkto:#point5;spotgroup:group-point5" position="-6.5 0 7"></a-image>
             </a-entity>
-
             <a-entity id="group-point4" scale="0 0 0">
                 <a-image spot="linkto:#point1;spotgroup:group-point1" position="-5.3 0 -6"></a-image>
                 <a-image spot="linkto:#point2;spotgroup:group-point2" position="-5 0 0.5"></a-image>
@@ -72,14 +65,19 @@
 
         </a-entity>
 
+
+<!--        <a-camera id="cam" position="0 1.6 0" rotation="-90 0 -180"look-controls>-->
+<!--            <a-entity cursor="rayOrigin: mouse">-->
+<!--            </a-entity>-->
+<!--        </a-camera>-->
+
         <a-entity id="cam" camera position="0 1.6 0" look-controls>
-            <a-entity cursor="fuse:true;fuseTimeout:2000"
-                      geometry="primitive:ring;radiusInner:0.01;radiusOuter:0.02"
-                      position="0 0 -1.8"
-                      material="shader:flat;color:#ff0000"
-                      animation__mouseenter="property:scale;to:3 3 3;startEvents:mouseenter;endEvents:mouseleave;dir:reverse;dur:2000;loop:1">
+            <a-entity cursor="rayOrigin: mouse"></a-entity>>
             </a-entity>
         </a-entity>
+
+        <a-cursor style="z-index: 9999">
+        </a-cursor>
 
     </a-scene>
 </body>
