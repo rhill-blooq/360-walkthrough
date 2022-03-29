@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>360 walkthrough</title>
+    <meta name="description" content="360 walkthrough">
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="app.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@5/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-layout-component@5.3.0/dist/aframe-layout-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-template-component@3.2.1/dist/aframe-template-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-proxy-event-component@2.1.0/dist/aframe-proxy-event-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.5.1/dist/aframe-look-at-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script>
+</head>
+<body>
+    <a-scene>
+        <a-assets>
+<!--            <video id="point1vid" crossorigin="anonymous" autoplay muted loop="true" src="assets/close_to_screen_video.mp4"></video>-->
+<!--            <video id="point1vid" crossorigin="anonymous" autoplay muted loop="true" src="assets/close_to_screen_video.mp4"></video>-->
+<!--            <video id="point1vid" crossorigin="anonymous" autoplay muted loop="true" src="assets/close_to_screen_video.mp4"></video>-->
+<!--            <video id="point1vid" crossorigin="anonymous" autoplay muted loop="true" src="assets/close_to_screen_video.mp4"></video>-->
+<!--            <video id="point1vid" crossorigin="anonymous" autoplay muted loop="true" src="assets/close_to_screen_video.mp4"></video>-->
+
+            <img id="point1" crossorigin="anonymous" src="assets/close_to_screen.jpg">
+            <img id="point2" crossorigin="anonymous" src="./assets/mid_shop.jpg">
+            <img id="point3" crossorigin="anonymous" src="./assets/far_from_screen.jpg">
+            <img id="point4" crossorigin="anonymous" src="./assets/exterior_right.jpg">
+            <img id="point5" crossorigin="anonymous" src="./assets/exterior_left.jpg">
+            <img id="hotspot" crossorigin="anonymous" src="./assets/hotspot.png">
+        </a-assets>
+
+        <a-sky id="skybox" src="#point1" radius="490" opacity="0.99"></a-sky>
+<!--        <a-sky id="skyvideo" src="#point1vid" auto-play-video="video: #point1vid"></a-sky>-->
+
+
+        <a-entity id="spots" hotspots>
+            <a-entity id="group-point1">
+                <a-image spot="linkto:#point2;spotgroup:group-point2" position="7 0 -0.7"></a-image>
+                <a-image spot="linkto:#point3;spotgroup:group-point3" position="11.5 0 0"></a-image>
+                <a-image spot="linkto:#point4;spotgroup:group-point4" position="6 0 -5.3"></a-image>
+                <a-image spot="linkto:#point5;spotgroup:group-point5" position="4.5 0 7"></a-image>
+            </a-entity>
+
+            <a-entity id="group-point2" scale="0 0 0">
+                <a-image spot="linkto:#point1;spotgroup:group-point1" position="-7 0 0.7"></a-image>
+                <a-image spot="linkto:#point3;spotgroup:group-point3" position="5 0 0.7"></a-image>
+                <a-image spot="linkto:#point4;spotgroup:group-point4" position="-0.5 0 -5.3"></a-image>
+                <a-image spot="linkto:#point5;spotgroup:group-point5" position="-1.5 0 7.7"></a-image>
+            </a-entity>
+
+            <a-entity id="group-point3" scale="0 0 0">
+                <a-image spot="linkto:#point1;spotgroup:group-point1" position="-11.5 0 0"></a-image>
+                <a-image spot="linkto:#point2;spotgroup:group-point2" position="-5 0 -0.7"></a-image>
+                <a-image spot="linkto:#point4;spotgroup:group-point4" position="-5.5 0 -6"></a-image>
+                <a-image spot="linkto:#point5;spotgroup:group-point5" position="-6.5 0 7"></a-image>
+            </a-entity>
+
+            <a-entity id="group-point4" scale="0 0 0">
+                <a-image spot="linkto:#point1;spotgroup:group-point1" position="-5.3 0 -6"></a-image>
+                <a-image spot="linkto:#point2;spotgroup:group-point2" position="-5 0 0.5"></a-image>
+                <a-image spot="linkto:#point3;spotgroup:group-point3" position="-5.3 0 6"></a-image>
+                <a-image spot="linkto:#point5;spotgroup:group-point5" position="-10.3 0 -1"></a-image>
+            </a-entity>
+
+            <a-entity id="group-point5" scale="0 0 0">
+                <a-image spot="linkto:#point1;spotgroup:group-point1" position="-5 0 6"></a-image>
+                <a-image spot="linkto:#point2;spotgroup:group-point2" position="-5.7 0 -1.5"></a-image>
+                <a-image spot="linkto:#point3;spotgroup:group-point3" position="-5 0 -7"></a-image>
+                <a-image spot="linkto:#point4;spotgroup:group-point4" position="-12.2 0 -0.5"></a-image>
+            </a-entity>
+
+        </a-entity>
+
+        <a-entity id="cam" camera position="0 1.6 0" look-controls>
+            <a-entity cursor="fuse:true;fuseTimeout:2000"
+                      geometry="primitive:ring;radiusInner:0.01;radiusOuter:0.02"
+                      position="0 0 -1.8"
+                      material="shader:flat;color:#ff0000"
+                      animation__mouseenter="property:scale;to:3 3 3;startEvents:mouseenter;endEvents:mouseleave;dir:reverse;dur:2000;loop:1">
+            </a-entity>
+        </a-entity>
+
+    </a-scene>
+</body>
